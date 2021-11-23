@@ -6,12 +6,12 @@ $DIR init-pki
 echo '
 set_var EASYRSA_REQ_COUNTRY    "ES"
 set_var EASYRSA_REQ_PROVINCE   "Castellón"
-set_var EASYRSA_REQ_CITY               "Castellón"
-set_var EASYRSA_REQ_ORG                "GVA"
-set_var EASYRSA_REQ_EMAIL            "aluull144@ieselcaminas.org"
-set_var EASYRSA_REQ_OU                  "Dep-Informatica-PROVINCIAL"
-set_var EASYRSA_ALGO                        "ec"
-set_var EASYRSA_DIGEST                     "sha512"
+set_var EASYRSA_REQ_CITY       "Castellón"
+set_var EASYRSA_REQ_ORG        "GVA"
+set_var EASYRSA_REQ_EMAIL      "aluull144@ieselcaminas.org"
+set_var EASYRSA_REQ_OU         "Dep-Informatica-PROVINCIAL"
+set_var EASYRSA_ALGO           "ec"
+set_var EASYRSA_DIGEST         "sha512"
 ' > $DIR/vars
 $DIR/easyrsa build-ca
 
