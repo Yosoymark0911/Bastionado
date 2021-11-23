@@ -21,7 +21,7 @@ sudo cp /home/jc/tools/ca.crt /usr/local/share/ca-certificates
 sudo update-ca-certificates
 =================================================================================
 =============================firma.sh============================================
-mkidr prueba-csr
+mkidr $HOME/prueba-csr
 openssl genrsa -out orion-server.key 
 openssl req -new -key orion-server.key -out  orion-server.req
 scp orion-server.req administrador@[IP]:$HOME/orion-server.req
