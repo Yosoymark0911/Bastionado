@@ -1,0 +1,8 @@
+alert icmp any any -> any any (msg: "ICMP detectado";)
+alert tcp $EXTERNAL_NET any -> $HOME_NET any (msg:"LOCAL DOS SYN packet flood inbound, Potential DOS"; flow:to_server; flags: S,12; threshold: type both, track by_dst, count 5000, seconds 5; classtype:misc-activity; sid:5;)
+alert tcp $HOME_NET any -> $HOME_NET any (msg:"LOCAL DOS SYN packet flood outbound, Potential DOS"; flow:to_server; flags: S,12; threshold: type both, track by_dst, count 5000, seconds 5; classtype:misc-activity; sid:6;)
+alert ssh any any -> any any (msg "Conexión ssh";)
+# Descartar conexiones ssh realizadas por brute force
+alert tcp $HOME_NET any -> $HOME_NET 22 (msg:"Posible SSH brute force attack!"; flags: S+; threshold: type both, track by_src, count 5, seconds 30; sid:10000001; rev: 1;)
+# Acceso HTTP
+alert http any any -> any any (msg:"Accediendo a página no permitida";content:"index.php"; http_uri; sid:1;)
